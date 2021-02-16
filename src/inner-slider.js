@@ -304,7 +304,8 @@ export class InnerSlider extends React.Component {
   };
   checkImagesLoad = () => {
     let images =
-      (this.list && this.list.querySelectorAll &&
+      (this.list &&
+        this.list.querySelectorAll &&
         this.list.querySelectorAll(".slick-slide img")) ||
       [];
     let imagesCount = images.length,
@@ -741,7 +742,7 @@ export class InnerSlider extends React.Component {
 
     let innerSliderProps = {
       className: className,
-      dir: "ltr",
+      dir: spec.arabic ? "rtl" : "ltr",
       style: this.props.style
     };
 
