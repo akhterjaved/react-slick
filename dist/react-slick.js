@@ -2573,6 +2573,17 @@ var getTrackLeft = function getTrackLeft(spec) {
     targetSlide = trackElem && trackElem.childNodes[targetSlideIndex];
     targetLeft = targetSlide ? targetSlide.offsetLeft * -1 : 0;
 
+    if (spec.arabic) {
+      if (targetSlide) {
+        var style = targetSlide.currentStyle || window.getComputedStyle(targetSlide);
+        var margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        var width = targetSlide.offsetWidth + margin;
+        targetLeft = width * targetSlideIndex;
+      } else {
+        targetLeft = 0;
+      }
+    }
+
     if (centerMode === true) {
       targetSlideIndex = infinite ? slideIndex + getPreClones(spec) : slideIndex;
       targetSlide = trackElem && trackElem.children[targetSlideIndex];
